@@ -1,3 +1,4 @@
+
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
@@ -60,7 +61,7 @@ jobs:
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
-      
+ 
       - name: Login to Azure
         uses: azure/login@v1
         with:
@@ -77,4 +78,4 @@ jobs:
           app-name: 'doc-system'
           slot-name: 'Production'
           package: .
-          
+
