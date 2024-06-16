@@ -72,6 +72,6 @@ jobs:
           slot-name: 'production'
           package: .
         env:
-          MONGO_URI: ${{ secrets.MONGO_URI }}
+          MONGO_URL: ${{ secrets.MONGO_URL }}
           API_BASE_URL: 'https://doc-system.azurewebsites.net/'
 

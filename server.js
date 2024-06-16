@@ -18,7 +18,7 @@ const app = express();
 connectDB();
 
 
-app.set('port', process.env.PORT || 8082);
+app.set('port', process.env.PORT || 8080);
 // middlewares
 app.use(morgan('dev'));
 app.use(express.json()); // to reduce parsing errors
