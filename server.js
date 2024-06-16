@@ -6,8 +6,6 @@ const cors = require('cors');
 const path = require('path'); // Required for resolving paths
 
 
-
-
 // dotenv config
 dotenv.config();
 
@@ -16,6 +14,9 @@ const app = express();
 
 // MONGO DB CONNECTION
 connectDB();
+
+//cors
+app.use(cors());
 
 
 app.set('port', process.env.PORT || 8080);
