@@ -1,7 +1,3 @@
-
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
 name: Build and deploy Node.js app to Azure Web App - doc-system
 
 on:
@@ -22,11 +18,11 @@ jobs:
         with:
           node-version: '20.x'
 
-      - name: install server dependencies
+      - name: Install server dependencies
         run: npm install
         working-directory: .
 
-      - name: install client dependencies 
+      - name: Install client dependencies 
         run: npm install 
         working-directory: ./client
 
@@ -34,9 +30,8 @@ jobs:
         run: npm run build
         working-directory: ./client
 
-      - name: Build client 
       - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+        run: zip -r release.zip ./*
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -51,7 +46,7 @@ jobs:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
-      id-token: write #This is required for requesting the JWT
+      id-token: write # This is required for requesting the JWT
 
     steps:
       - name: Download artifact from build job
@@ -65,17 +60,17 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_1545EE5CE1B54F7EB437E73AAF180B18 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_77290F6E96CD4639934DE29F3FC59709 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_9DBE1D61E73A45BA86CDDAB4CCAC89C7 }}
-        env:
-          MONGO_URI: ${{ secrets.MONGO_URI }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID }}
 
-      - name: 'Deploy to Azure Web App'
+      - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'doc-system'
-          slot-name: 'Production'
+          slot-name: 'production'
           package: .
+        env:
+          MONGO_URI: ${{ secrets.MONGO_URI }}
 
