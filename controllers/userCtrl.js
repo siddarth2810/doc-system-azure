@@ -35,13 +35,15 @@ const loginController = async (req, res) => {
         if (!isMatch) {
             return res.status(401).send({  message: `Invaild password or Email` })
         }
-        const jwt = jwt.sign({ id: user.__id }, process.env.JWT_SECRET, { expiresIn: '1d' }) 
-        return res.status(200).send({ success: true, message: 'Login successful !', token })
-    }
+                const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
+        return res.status(200).send({ success: true, message: 'Login successful!', token });
+
+   }
     catch (err) {
         console.log(err)
         return res.status(500).send({ message: `Internel server error ${err.message}` })
     }
 };
+
 
 module.exports = { registerController, loginController };
