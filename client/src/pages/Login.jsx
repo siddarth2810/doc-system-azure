@@ -2,13 +2,12 @@ import React from "react";
 import { Form, Input, message } from "antd";
 import "../styles/RegisterStyles.css";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import axios from "axios";
-
+import api from "../api.jsx"
 const Login = () => {
     const navigate = useNavigate();
     const onFinishHandler = async (values) => {
         try {
-            const res = await axios.post("api/v1/user/login", values);
+            const res = await api.post("api/v1/user/login", values);
 
             if (res.data.success) {
                 message.success(`Login successful`);

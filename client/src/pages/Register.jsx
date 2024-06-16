@@ -1,14 +1,14 @@
 import React from "react";
 import { Form, message, Input } from "antd";
-import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import api from "../api.jsx";
 
 const Register = () => {
   const navigate = useNavigate();
 
   const onFinishHandler = async (values) => {
     try {
-      const res = await axios.post("api/v1/user/register", values);
+      const res = await api.post("api/v1/user/register", values);
 
       if (res.data.success) {
         message.success("User Registered Successfully");

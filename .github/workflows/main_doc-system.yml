@@ -44,7 +44,7 @@ jobs:
     needs: build
     environment:
       name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+      url: 'https://doc-system.azurewebsites.net/' 
     permissions:
       id-token: write # This is required for requesting the JWT
 
@@ -73,4 +73,5 @@ jobs:
           package: .
         env:
           MONGO_URI: ${{ secrets.MONGO_URI }}
+          API_BASE_URL: 'https://doc-system.azurewebsites.net/'
 
