@@ -18,10 +18,6 @@ connectDB();
 app.use(express.json()); // to reduce parsing errors
 app.use(morgan('dev'));
 
-const corsOptions = {
-    origin: '*',
-};
-app.use(cors(corsOptions));
 
 app.get('/', (req, res) => {
     res.send('Hello World! This is the root route.');
@@ -44,7 +40,8 @@ app.post('/api/v1/user/register', (req, res, next) => {
 app.use("/api/v1/user", require('./routes/userRoutes'));
 
 // Set and start the server on the correct port
-const port = process.env.PORT || 8082;
+
+app.set('port', process.env.PORT || 8082);
 app.listen(port, () => {
     console.log(`Server Running in ${process.env.NODE_ENV} Mode on port ${port}`);
 });
