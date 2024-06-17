@@ -8,6 +8,8 @@ const Layout = ({ children }) => {
   const { user } = useSelector((state) => state.user);
   const location = useLocation();
   const navigate = useNavigate();
+console.log(user);
+console.log(user?.name)
   // logout funtion
   const handleLogout = () => {
     localStorage.clear();
