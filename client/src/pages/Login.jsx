@@ -12,6 +12,7 @@ const Login = () => {
             const res = await api.post("api/v1/user/login", values);
 
             if (res.data.success) {
+                localStorage.setItem("token", res.data.token);
                 message.success(`Login successful`);
                 navigate('/');
             } else {
