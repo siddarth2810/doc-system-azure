@@ -3,6 +3,8 @@ import { Form, Input, message } from "antd";
 import "../styles/RegisterStyles.css";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import api from "../api.jsx"
+
+
 const Login = () => {
     const navigate = useNavigate();
     const onFinishHandler = async (values) => {
@@ -19,6 +21,7 @@ const Login = () => {
 
         }
         catch (err) {
+            dispatch(hideLoading());
             console.log(`Error while logging ${err}`);
             message.error("Something went wrong");
 
