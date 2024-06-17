@@ -33,12 +33,12 @@ const loginController = async (req, res) => {
         }
         const isMatch = await bcrypt.compare(req.body.password, user.password)
         if (!isMatch) {
-            return res.status(401).send({  message: `Invaild password or Email` })
+            return res.status(401).send({ message: `Invaild password or Email` })
         }
-                const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
         return res.status(200).send({ success: true, message: 'Login successful!', token });
 
-   }
+    }
     catch (err) {
         console.log(err)
         return res.status(500).send({ message: `Internel server error ${err.message}` })
@@ -46,4 +46,26 @@ const loginController = async (req, res) => {
 };
 
 
-module.exports = { registerController, loginController };
+const authController = async (req, res) => {
+    try {
+        const user = await userModel.findOne({ _id: req.body.userId }).lean();
+        if (!user) {
+            return res.status(401).send({ message: 'User does not exist' })
+        }
+        else {
+            return res.status(200).send({
+                success: true,
+                message: 'User is authenticated',
+                data: {
+                    name: user.name,
+                    email: user.email
+                },
+            });
+        }
+    }
+    catch (err) {
+        console.log(err)
+        return res.status(500).send({ message: `Internel server error ${err.message}` })
+    }
+}
+module.exports = { registerController, loginController, authController };
