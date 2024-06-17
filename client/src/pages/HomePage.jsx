@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import api from '../api';
 import { useEffect } from 'react';
+import Layout from "../components/Layout.jsx"
 const HomePage = () => {
 
     const getUserData = async () => {
@@ -24,8 +25,9 @@ const HomePage = () => {
     }, []);
     return (
         <>
+        <Layout>
             <h2>homepage</h2>
-            <Link to="/register">Register</Link>
+        </Layout>
         </>
     );
 }

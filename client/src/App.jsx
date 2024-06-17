@@ -8,7 +8,8 @@ import Login from "./pages/Login";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import PublicRoutes from "./components/PublicRoutes"; // Ensure you have this component
-
+import { Provider } from "react-redux";
+import store from "./redux/store.js";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -38,7 +39,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
+        <Provider store={store}>
         <RouterProvider router={router} />
+        </Provider>
     </React.StrictMode>
 );
 
