@@ -13,7 +13,6 @@ const authMiddleware = (req, res, next) => {
                 req.body.userId = decoded.id;
                 next();
             }
-
         })
 
     } catch (err) {
@@ -21,9 +20,6 @@ const authMiddleware = (req, res, next) => {
         console.log(err);
         return res.status(401).send({ success: false, message: "auth middleware error" });
     }
-
-
 }
-
 
 module.exports = authMiddleware;

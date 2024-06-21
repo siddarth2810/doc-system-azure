@@ -11,13 +11,13 @@ const registerController = async (req, res) => {
             return res.status(200).send({ success: false, message: 'User already exists' });
         }
 
+        const password = req.body.password;
         const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(req.body.password, salt);
-
-        const newUser = new userModel({ ...req.body, password: hashedPassword });
+        const hashedPassword = await bcrypt.hash(password, salt);
+        req.body.password = hashedPassword;
+        const newUser = new userModel(req.body);
         await newUser.save();
 
-        console.log('User registered successfully:', req.body.email);
         res.status(201).send({ success: true, message: 'Registration successful' });
     } catch (err) {
         console.error('Registration error:', err);
