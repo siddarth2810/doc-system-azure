@@ -1,23 +1,25 @@
 import React from "react";
 import "../styles/LayoutStyles.css";
-import { adminMenu, userMenu } from "./Data/data.jsx"
+import { userMenu, adminMenu } from "./Data/data.jsx"
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { message } from "antd";
 const Layout = ({ children }) => {
-  const { user } = useSelector((state) => state.user);
-  const location = useLocation();
-  const navigate = useNavigate();
-  // logout funtion
-  const handleLogout = () => {
-    localStorage.clear();
-    message.success("Logout Successfully");
-    navigate("/login");
-  };
+    const { user } = useSelector((state) => state.user);
+    const location = useLocation();
+    const navigate = useNavigate();
 
-  // redering menu list
-  const SidebarMenu = user?.isAdmin ? adminMenu : userMenu;
-  return (
+    
+    // logout funtion
+    const handleLogout = () => {
+        localStorage.clear();
+        message.success("Logout Successfully");
+        navigate("/login");
+    };
+
+     // Only define SidebarMenu if user is not null
+    const SidebarMenu = user?.isAdmin ? adminMenu : userMenu;
+      return (
     <>
       <div className="main">
         <div className="layout">

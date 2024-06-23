@@ -12,6 +12,7 @@ const Login = () => {
     const onFinishHandler = async (values) => {
         try {
             const res = await api.post("api/v1/user/login", values);
+            window.location.reload();
 
             if (res.data.success) {
                 localStorage.setItem("token", res.data.token);
