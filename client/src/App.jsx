@@ -10,6 +10,7 @@ import ProtectedRoutes from "./components/ProtectedRoutes";
 import PublicRoutes from "./components/PublicRoutes"; // Ensure you have this component
 import { Provider } from "react-redux";
 import store from "./redux/store.js";
+import ApplyDoctor from "./pages/ApplyDoctor.jsx";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -28,6 +29,14 @@ const router = createBrowserRouter([
         )
     },
     {
+        path: "/apply-doctor",
+        element: (
+            <ProtectedRoutes>
+                <ApplyDoctor/>
+            </ProtectedRoutes>
+        )
+    },
+    {
         path: "/register",
         element: (
             <PublicRoutes>
@@ -40,7 +49,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
         <Provider store={store}>
-        <RouterProvider router={router} />
+            <RouterProvider router={router} />
         </Provider>
     </React.StrictMode>
 );
