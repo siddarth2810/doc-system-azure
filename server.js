@@ -5,7 +5,6 @@ const connectDB = require('./config/db');
 const cors = require('cors');
 const path = require('path'); // Required for resolving paths
 
-
 // dotenv config
 dotenv.config();
 
@@ -15,33 +14,27 @@ const app = express();
 // MONGO DB CONNECTION
 connectDB();
 
-//cors
-app.use(cors());
+// Middlewares
+app.use(cors()); // CORS Middleware
+app.use(morgan('dev')); // Logging Middleware
+app.use(express.json()); // Body Parsing Middleware
+app.use(express.urlencoded({ extended: false })); // URL-Encoded Parsing Middleware
 
+// API Routes
+app.use("/api/v1/user", require('./routes/userRoutes'));
+app.use("/api/v1/admin", require('./routes/adminRoutes'));
 
-app.set('port', process.env.PORT || 8080);
-// middlewares
-app.use(morgan('dev'));
-app.use(express.json()); // to reduce parsing errors
-app.use(express.urlencoded({ extended: false }));
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'client', 'dist')));
 
-app.use(express.static('./client/dist'))
-
+// Catch-all route to serve the React app's index.html for unknown paths
 app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"));
 });
 
-app.get('/', (req, res) => {
-    res.send('Hello World! This is the root route.');
-});
-
-
-// routes
-app.use("/api/v1/user", require('./routes/userRoutes'));
-
 // Set and start the server on the correct port
-
-app.listen(app.get('port'), () => {
-    console.log(`Server is running on port ${app.get('port')}`);
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
 

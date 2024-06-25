@@ -12,6 +12,8 @@ import { Provider } from "react-redux";
 import store from "./redux/store.js";
 import ApplyDoctor from "./pages/ApplyDoctor.jsx";
 import NotificationPage from "./pages/NotificanPage.jsx";
+import Doctors from "./pages/admin/Doctors.jsx";
+import Users from "./pages/admin/Users.jsx";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -42,6 +44,22 @@ const router = createBrowserRouter([
         element: (
             <ProtectedRoutes>
                 <NotificationPage/>
+            </ProtectedRoutes>
+        )
+    },
+        {
+        path: "/admin/doctors",
+        element: (
+            <ProtectedRoutes>
+                <Doctors/>
+            </ProtectedRoutes>
+        )
+    },
+    {
+        path: "/admin/users",
+        element: (
+            <ProtectedRoutes>
+                <Users/>
             </ProtectedRoutes>
         )
     },
