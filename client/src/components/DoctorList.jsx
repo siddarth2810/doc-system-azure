@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import "../styles/LayoutStyles.css";
 
 const DoctorList = ({ doctor }) => {
   const navigate = useNavigate();
@@ -8,9 +9,15 @@ const DoctorList = ({ doctor }) => {
       <div
         className="card m-2"
         style={{ cursor: "pointer" }}
-        onClick={() => navigate(`/doctor/book-appointment/${doctor._id}`)}
-      >
-        <div className="card-header">
+        onClick={() => navigate(`/doctor/book-appointment/${doctor._id}`)}>
+        <div
+          className="card-header"
+          style={{
+            backgroundColor: "#fff",
+            fontSize: "1rem",
+            fontWeight: "700",
+            color: "#3f51b5",
+          }}>
           Dr. {doctor.firstName} {doctor.lastName}
         </div>
         <div className="card-body">
@@ -33,4 +40,3 @@ const DoctorList = ({ doctor }) => {
 };
 
 export default DoctorList;
-

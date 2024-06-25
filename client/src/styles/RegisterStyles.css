@@ -1,13 +1,52 @@
 .form-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-   
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .register-form {
-    width: 35%;
-    
-    border: 1px solid #ccc;
+  width: 35%;
+
+  border: 1px solid #ccc;
+}
+
+/* RegisterStyles.css */
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.image-container {
+  background-image: url("../../doc-background.webp");
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* Full height */
+  width: 100%; /* Full width */
+  position: fixed; /* Fixed position to cover entire viewport */
+  z-index: -1; /* Send background image to the back */
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full height to center form vertically */
+  position: relative; /* To keep the form in front of the background */
+}
+
+.register-form {
+  background: rgba(
+    255,
+    255,
+    255,
+    0.9
+  ); /* Semi-transparent background for readability */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

@@ -1,0 +1,14 @@
+/* Doctor Information Section */
+.container h4 {
+  margin-bottom: 10px; /* Add space between headings */
+}
+
+.container .d-flex {
+  align-items: center; /* Align elements vertically */
+}
+
+/* Date and Time Pickers */
+.container .d-flex .ant-time-picker,
+.container .d-flex .ant-date-picker {
+  width: 100%; /* Make pickers full width */
+}
