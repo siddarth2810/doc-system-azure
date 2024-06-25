@@ -14,6 +14,7 @@ import ApplyDoctor from "./pages/ApplyDoctor.jsx";
 import NotificationPage from "./pages/NotificanPage.jsx";
 import Doctors from "./pages/admin/Doctors.jsx";
 import Users from "./pages/admin/Users.jsx";
+import Profile from "./pages/doctor/Profile.jsx";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -60,6 +61,14 @@ const router = createBrowserRouter([
         element: (
             <ProtectedRoutes>
                 <Users/>
+            </ProtectedRoutes>
+        )
+    },
+        {
+            path: "/doctor/profile/:id",
+        element: (
+            <ProtectedRoutes>
+                <Profile/>
             </ProtectedRoutes>
         )
     },

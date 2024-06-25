@@ -23,6 +23,8 @@ app.use(express.urlencoded({ extended: false })); // URL-Encoded Parsing Middlew
 // API Routes
 app.use("/api/v1/user", require('./routes/userRoutes'));
 app.use("/api/v1/admin", require('./routes/adminRoutes'));
+app.use("/api/v1/changeAccountStatus", require('./routes/adminRoutes'));
+app.use("/api/v1/doctor", require('./routes/doctorRoutes'));
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client', 'dist')));
