@@ -59,7 +59,7 @@ const NotificationPage = () => {
     <Layout>
       <h4 className="p-3 text-center">Notification Page</h4>
       <Tabs>
-        <Tabs.TabPane tab="unRead" key={0}>
+        <Tabs.TabPane tab="Unread" key={0}>
           <div className="d-flex justify-content-end">
             <h4 className="p-2" onClick={handleMarkAllRead}>
               Mark All Read

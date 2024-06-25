@@ -3,6 +3,9 @@ import api from "../api.jsx";
 import Layout from "./../components/Layout";
 import { Row } from "antd";
 import DoctorList from "../components/DoctorList";
+
+//import homepage css
+import "./HomePage.css";
 const HomePage = () => {
   const [doctors, setDoctors] = useState([]);
   // login user data
@@ -30,7 +33,7 @@ const HomePage = () => {
   }, []);
   return (
     <Layout>
-      <h1 className="text-center">Home Page</h1>
+      <h1 className="text">Home Page</h1>
       <Row>
         {doctors && doctors.map((doctor) => <DoctorList doctor={doctor} />)}
       </Row>
@@ -39,4 +42,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-

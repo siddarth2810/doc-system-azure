@@ -15,6 +15,7 @@ import NotificationPage from "./pages/NotificanPage.jsx";
 import Doctors from "./pages/admin/Doctors.jsx";
 import Users from "./pages/admin/Users.jsx";
 import Profile from "./pages/doctor/Profile.jsx";
+import BookingPage from "./pages/BookingPage.jsx";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -36,23 +37,23 @@ const router = createBrowserRouter([
         path: "/apply-doctor",
         element: (
             <ProtectedRoutes>
-                <ApplyDoctor/>
+                <ApplyDoctor />
             </ProtectedRoutes>
         )
     },
-        {
+    {
         path: "/notification",
         element: (
             <ProtectedRoutes>
-                <NotificationPage/>
+                <NotificationPage />
             </ProtectedRoutes>
         )
     },
-        {
+    {
         path: "/admin/doctors",
         element: (
             <ProtectedRoutes>
-                <Doctors/>
+                <Doctors />
             </ProtectedRoutes>
         )
     },
@@ -60,18 +61,27 @@ const router = createBrowserRouter([
         path: "/admin/users",
         element: (
             <ProtectedRoutes>
-                <Users/>
+                <Users />
             </ProtectedRoutes>
         )
     },
-        {
-            path: "/doctor/profile/:id",
+    {
+        path: "/doctor/profile/:id",
         element: (
             <ProtectedRoutes>
-                <Profile/>
+                <Profile />
             </ProtectedRoutes>
         )
     },
+    {
+        path: "/doctor/book-appointment/:doctorId",
+        element: (
+            <ProtectedRoutes>
+                <BookingPage />
+            </ProtectedRoutes>
+        )
+    },
+
     {
         path: "/register",
         element: (

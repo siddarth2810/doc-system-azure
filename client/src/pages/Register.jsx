@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, message, Input } from "antd";
 import { Link, useNavigate } from "react-router-dom";
+import "../styles/RegisterStyles.css";
 import api from "../api.jsx";
 
 const Register = () => {
@@ -24,6 +25,7 @@ const Register = () => {
 
   return (
     <div className="form-container">
+      <div className="image-container"></div>
       <Form
         layout="vertical"
         onFinish={onFinishHandler}

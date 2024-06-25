@@ -31,6 +31,8 @@ const Login = () => {
     };
     return (
         <>
+            <div className="image-container">
+            </div>
             <div className="form-container">
                 <Form
                     layout="vertical"
