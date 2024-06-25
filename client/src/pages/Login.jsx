@@ -1,14 +1,12 @@
 import React from "react";
 import { Form, Input, message } from "antd";
 import "../styles/RegisterStyles.css";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import api from "../api.jsx"
-import {useDispatch} from "react-redux";
 
 
 const Login = () => {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
     const onFinishHandler = async (values) => {
         try {
             const res = await api.post("api/v1/user/login", values);
@@ -25,7 +23,6 @@ const Login = () => {
 
         }
         catch (err) {
-            dispatch(hideLoading());
             console.log(`Error while logging ${err}`);
             message.error("Something went wrong");
 
