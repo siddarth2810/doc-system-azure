@@ -1,7 +1,7 @@
 # Doctor Appointment System
 
 ## Introduction
-Welcome to the Doctor Appointment System! This application allows users to book appointments with doctors, manage their profiles, and provides an administrative interface for managing doctors and appointments. 
+Welcome to the Doctor Appointment System! This application allows users to book appointments with doctors, manage their profiles, and provides an administrative interface for managing doctors and appointments 
 
 ## Demo Video
 [![Doc-appointment-demo](https://img.youtube.com/vi/cprrmRxr2PE/0.jpg)](https://www.youtube.com/watch?v=cprrmRxr2PE)
